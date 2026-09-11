@@ -1,8 +1,8 @@
-import hero1 from "../../assets/image/hero30.jpg";
-import hero2 from "../../assets/image/hero30.jpg";
-import hero3 from "../../assets/image/hero30.jpg";
-import hero4 from "../../assets/image/hero30.jpg";
-import hero5 from "../../assets/image/hero30.jpg";
+import hero1 from "../../assets/image/images (59).jpg";
+import hero2 from "../../assets/image/images (60).jpg";
+import hero3 from "../../assets/image/images (64).jpg";
+import hero4 from "../../assets/image/hero24.jpg";
+import hero5 from "../../assets/image/images (62).jpg";
 import hero6 from "../../assets/image/hero30.jpg";
 import hero11 from "../../assets/image/hero11.jpg";
 

@@ -12,7 +12,6 @@ export const useCart = () => {
 };
 
 export const CartProvider = ({ children }) => {
-
   const [cart, setCart] = useState([]);
 
   // ===============================
@@ -20,25 +19,28 @@ export const CartProvider = ({ children }) => {
   // ===============================
 
   const addToCart = (product) => {
-
     setCart((currentCart) => {
+      // Always use the actual product ID
+      const productId = product.id || product._id;
+
+      const productSize = product.size || product.sizes?.[0] || "M";
+      const productColor =
+        product.color || product.colors?.[0] || "Default";
 
       const existingProduct = currentCart.find(
         (item) =>
-          item.id === product.id &&
-          item.size === product.size &&
-          item.color === product.color
+          item.id === productId &&
+          item.size === productSize &&
+          item.color === productColor
       );
 
       // Product already exists
       if (existingProduct) {
-
         return currentCart.map((item) => {
-
           if (
-            item.id === product.id &&
-            item.size === product.size &&
-            item.color === product.color
+            item.id === productId &&
+            item.size === productSize &&
+            item.color === productColor
           ) {
             return {
               ...item,
@@ -57,27 +59,24 @@ export const CartProvider = ({ children }) => {
         ...currentCart,
         {
           ...product,
-          id: product.id,
+
+          // Store one consistent ID
+          id: productId,
+
           quantity: product.quantity || 1,
-          size: product.size || "M",
-          color: product.color || "Default",
+
+          size: productSize,
+          color: productColor,
         },
       ];
-
     });
-
   };
 
   // ===============================
   // REMOVE FROM CART
   // ===============================
 
-  const removeFromCart = (
-    id,
-    size,
-    color
-  ) => {
-
+  const removeFromCart = (id, size, color) => {
     setCart((currentCart) =>
       currentCart.filter(
         (item) =>
@@ -88,7 +87,6 @@ export const CartProvider = ({ children }) => {
           )
       )
     );
-
   };
 
   // ===============================
@@ -101,21 +99,13 @@ export const CartProvider = ({ children }) => {
     color,
     quantity
   ) => {
-
     if (quantity <= 0) {
-
-      removeFromCart(
-        id,
-        size,
-        color
-      );
-
+      removeFromCart(id, size, color);
       return;
     }
 
     setCart((currentCart) =>
       currentCart.map((item) => {
-
         if (
           item.id === id &&
           item.size === size &&
@@ -128,10 +118,8 @@ export const CartProvider = ({ children }) => {
         }
 
         return item;
-
       })
     );
-
   };
 
   // ===============================
@@ -139,13 +127,11 @@ export const CartProvider = ({ children }) => {
   // ===============================
 
   const cartCount = useMemo(() => {
-
     return cart.reduce(
       (total, item) =>
         total + item.quantity,
       0
     );
-
   }, [cart]);
 
   // ===============================
@@ -153,15 +139,13 @@ export const CartProvider = ({ children }) => {
   // ===============================
 
   const cartTotal = useMemo(() => {
-
     return cart.reduce(
       (total, item) =>
         total +
         Number(item.price || 0) *
-        item.quantity,
+          item.quantity,
       0
     );
-
   }, [cart]);
 
   // ===============================
@@ -183,4 +167,3 @@ export const CartProvider = ({ children }) => {
     </CartContext.Provider>
   );
 };
-
