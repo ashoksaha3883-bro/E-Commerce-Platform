@@ -27,7 +27,7 @@ const Cart = () => {
       return image;
     }
 
-    return `http://localhost:4000${image}`;
+    return `https://e-commerce-platform-go96.onrender.com${image}`;
   };
 
   // ===============================
