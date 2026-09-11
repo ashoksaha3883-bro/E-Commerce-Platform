@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:4000/api/products";
+const API_URL = "https://e-commerce-platform-go96.onrender.com/api/products";
 
 export const getProducts = async () => {
   try {
@@ -41,4 +41,3 @@ export const getProductById = async (id) => {
     throw error;
   }
 };
-
