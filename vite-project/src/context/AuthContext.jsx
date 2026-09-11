@@ -7,7 +7,7 @@ import {
 
 const AuthContext = createContext();
 
-const API_URL = "http://localhost:4000/api/auth";
+const API_URL = "https://e-commerce-platform-go96.onrender.com/api/auth";
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);

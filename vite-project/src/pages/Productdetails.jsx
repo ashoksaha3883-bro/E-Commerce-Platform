@@ -16,7 +16,7 @@ import { Link, useParams } from "react-router-dom";
 import { useCart } from "../context/CartContext.jsx";
 import { getProducts } from "../services/productApi.js";
 
-const API_URL = "http://localhost:4000";
+const API_URL = "https://e-commerce-platform-go96.onrender.com";
 
 const ProductDetails = () => {
   const { id } = useParams();
