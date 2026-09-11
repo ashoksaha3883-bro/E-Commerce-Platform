@@ -297,10 +297,10 @@ const ProductPage = ({ title, category, collection }) => {
 
                     <img
                       src={
-                        product.image?.startsWith("http")
-                          ? product.image
-                          : `http://localhost:4000${product.image}`
-                      }
+    product.image?.startsWith("http")
+      ? product.image
+      : `https://e-commerce-platform-go96.onrender.com${product.image}`
+  }
                       alt={product.name}
                       loading={index < 4 ? "eager" : "lazy"}
                       className="
